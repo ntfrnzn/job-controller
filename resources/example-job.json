@@ -1,0 +1,43 @@
+{
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": {
+        "labels": {
+            "run": "example-job"
+        },
+        "generateName": "example-job-"
+    },
+    "spec": {
+        "completions": 1,
+        "parallelism": 1,
+        "template": {
+            "metadata": {
+                "labels": {
+                    "run": "example-job"
+                }
+            },
+            "spec": {
+                "containers": [{
+                    "env": [{
+                        "name": "TOKEN",
+                        "value": "{{.jobToken}}"
+                    }],
+                    "command": [
+                        "echo",
+                        "job token: $(TOKEN)"
+                    ],
+                    "image": "busybox",
+                    "name": "example-job",
+                    "resources": {
+                        "requests": {
+                            "cpu": "100m",
+                            "memory": "100Mi"
+                        }
+                    }
+                }],
+                "restartPolicy": "OnFailure",
+                "securityContext": {}
+            }
+        }
+    }
+}

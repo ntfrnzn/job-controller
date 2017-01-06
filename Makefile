@@ -28,8 +28,7 @@ ARCH ?= amd64
 # VERSION := $(shell git describe --always --dirty)-$(ARCH)
 #
 # This version-strategy uses a manual value to set the version string
-VERSION := 0.1.0
-
+VERSION := 0.1.7
 
 SRC_DIRS := cmd pkg # directories which hold app source (not vendored)
 
