@@ -32,7 +32,7 @@ func newInClusterJobController() *JobController {
 		panic(err.Error())
 	}
 
-	namespace := "default" // TODO look this up to match current ns
+	namespace := "default"
 
 	configmaps := clientset.Core().ConfigMaps(namespace)
 	cm, err := configmaps.Get("job-template")
